@@ -1,5 +1,12 @@
 <template>
-  <div class="sidebar">Allo</div>
+  <div class="sidebar">
+    <ul>
+      <li class="sidebar__icon">H</li>
+      <li class="sidebar__icon">X</li>
+      <li class="sidebar__icon">Y</li>
+      <li class="sidebar__icon">T</li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
