@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.3.92",
+    "flexboxgrid": "^6.3.1",
     "vue": "^2.5.21",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
