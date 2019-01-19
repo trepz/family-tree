@@ -4,6 +4,9 @@
       <!-- main title -->
       <div class="title title--big title--soft">Family Tree</div>
 
+      <!-- spacer -->
+      <div class="mb-75"></div>
+
       <!-- init buttons -->
       <div class="row center-xs">
         <div class="col-xs-3">
