@@ -1,0 +1,62 @@
+.has-text-left {
+  text-align: left;
+}
+.has-text-right {
+  text-align: right;
+}
+
+.is-relative {
+  position: relative;
+}
+.is-absolute {
+  position: absolute;
+}
+.is-fixed {
+  position: fixed;
+}
+
+/**
+ * Generate margin and padding helpers.
+ *
+ * This creates classes like .pb-5 for padding-bottom: 5px; Add numbers
+ * to the gap set to make them available as classes.
+ */
+$gap_set: (
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  75,
+  100
+); // Add stuff if you feel like it I don't know man you do you.
+
+$sides: (top, bottom, left, right);
+
+@each $gap in $gap_set {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$gap} {
+      margin-#{$side}: #{$gap}px;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$gap} {
+      padding-#{$side}: #{$gap}px;
+    }
+  }
+}
+
+/**
+ * Generate z-index helpers. Creates selectors like .z-5 for a z-index
+ * of 5. Edit the zindexes array to expand the values.
+ */
+$zindexes: (1, 2, 3, 4, 5, 9, 10, 19, 20, 99, 100);
+@each $z in $zindexes {
+  .z-#{$z} {
+    z-index: $z;
+  }
+}
