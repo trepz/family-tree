@@ -2,7 +2,7 @@
   <div class="page">
     <div class="page__content page__content--centered">
       <!-- main title -->
-      <div class="title title--big">Family Tree.</div>
+      <div class="title title--big title--soft">Family Tree</div>
 
       <!-- init buttons -->
       <div class="row center-xs">
