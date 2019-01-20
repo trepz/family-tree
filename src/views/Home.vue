@@ -27,7 +27,11 @@
     </div>
 
     <!-- create new tree modal -->
-    <div class="modal" v-if="showCreateModal">Enter the name for your family tree: [ ]</div>
+    <div class="modal" v-if="showCreateModal">
+      Enter the name for your family tree:
+      <input type="text" v-model="newTreeName">
+      <button @click="createNewAndOpen">Create</button>
+    </div>
 
     <!-- open existing modal -->
     <div class="modal" v-if="showOpenModal">Select from the following saved trees: [ ]</div>
@@ -36,10 +40,20 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import fs from 'fs'
+import { remote } from 'electron'
 
 @Component
 export default class Home extends Vue {
   showCreateModal: boolean = false
   showOpenModal: boolean = false
+  newTreeName: string = ''
+
+  createNewAndOpen(): void {
+    fs.writeFile(`${remote.app.getPath('home')}/.family-tree-data/trees/${this.newTreeName}.json`, '', err => {
+      if (err) throw err
+      alert('created')
+    })
+  }
 }
 </script>
