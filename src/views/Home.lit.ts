@@ -46,7 +46,9 @@ const template = (app: Home) => html`
     </Modal>
 
     <!-- open existing modal -->
-    <Modal v-if="${app.showOpenModal}">Select from the following saved trees: [ ]</Modal>
+    <Modal v-if="${app.showOpenModal}" @close="${(app.showOpenModal = false)}">
+      Select from the following saved trees: [ ]
+    </Modal>
   </div>
 `
 
