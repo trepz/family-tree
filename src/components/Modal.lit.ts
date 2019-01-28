@@ -3,7 +3,7 @@ import { html } from '@/utils'
 
 /** @VueLiteralCompiler Template */
 const template = html`
-  <div class="modal">
+  <div class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
