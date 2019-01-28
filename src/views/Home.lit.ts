@@ -5,6 +5,8 @@ import { remote } from 'electron'
 import { html } from '@/utils'
 import { promisify } from 'util'
 
+import Modal from '@/components/Modal.lit'
+
 const write = promisify(fs.writeFile)
 const make = promisify(mkdirp)
 
@@ -38,17 +40,19 @@ const template = (app: Home) => html`
     </div>
 
     <!-- create new tree modal -->
-    <div class="modal" v-if="${app.showCreateModal}">
+    <Modal v-if="${app.showCreateModal}">
       Enter the name for your family tree: <input type="text" v-model="${app.newTreeName}" />
       <button @click="${app.createNewAndOpen()}">Create</button>
-    </div>
+    </Modal>
 
     <!-- open existing modal -->
-    <div class="modal" v-if="${app.showOpenModal}">Select from the following saved trees: [ ]</div>
+    <Modal v-if="${app.showOpenModal}">Select from the following saved trees: [ ]</Modal>
   </div>
 `
 
-@Component
+@Component({
+  components: { Modal },
+})
 export default class Home extends Vue {
   showCreateModal: boolean = false
   showOpenModal: boolean = false
