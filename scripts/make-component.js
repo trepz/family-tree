@@ -4,6 +4,7 @@
 const fs = require('fs')
 
 const name = process.argv[2]
+const dir = process.argv[3] || 'components'
 if (!name) {
   console.log('Please enter a component name.')
   process.exit()
@@ -22,7 +23,7 @@ const template = html\`
 export default class ${name} extends Vue {}
 `
 
-fs.writeFile(`./src/components/${name}.lit.ts`, template, { flag: 'wx' }, err => {
+fs.writeFile(`./src/${dir}/${name}.lit.ts`, template, { flag: 'wx' }, err => {
   if (err) {
     console.log(err)
     process.exit()
