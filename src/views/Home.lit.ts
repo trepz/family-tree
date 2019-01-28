@@ -1,7 +1,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import fs from 'fs'
+import mkdirp from 'mkdirp'
 import { remote } from 'electron'
 import { html } from '@/utils'
+import { promisify } from 'util'
+
+const write = promisify(fs.writeFile)
+const make = promisify(mkdirp)
 
 /** @VueLiteralCompiler Template */
 const template = (app: Home) => html`
@@ -49,10 +54,36 @@ export default class Home extends Vue {
   showOpenModal: boolean = false
   newTreeName: string = ''
 
-  createNewAndOpen(): void {
-    fs.writeFile(`${remote.app.getPath('home')}/.family-tree-data/trees/${this.newTreeName}.json`, '', err => {
-      if (err) throw err
-      alert('created')
-    })
+  // File path to storage
+  path: string = `${remote.app.getPath('home')}/family-tree-data/trees/`
+
+  /**
+   * Create a new json file which represents a family tree and open it in the editor.
+   *
+   * @param {number} attempt - The number of attempts this function will try on ENOENT error.
+   */
+  async createNewAndOpen(attempt: number = 1): Promise<void> {
+    try {
+      await write(`${this.path}${this.newTreeName}.json`, '')
+    } catch (err) {
+      if (err.code === 'ENOENT' && attempt > 0) {
+        await this.createStorageDir()
+        return this.createNewAndOpen(--attempt)
+      }
+      // -- HANDLE FAILURE WITH MODAL --
+    }
+
+    console.log('File created successfully')
+  }
+
+  async createStorageDir(): Promise<void> {
+    try {
+      await make(this.path)
+    } catch (err) {
+      console.log(`Failed to create storage path at ${this.path}`)
+      // -- HANDLE FAILURE WITH MODAL --
+      return
+    }
+    console.log(`Created storage path at ${this.path}`)
   }
 }
