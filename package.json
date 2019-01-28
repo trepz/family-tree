@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
+    "@types/mkdirp": "^0.5.2",
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-typescript": "^3.0.1",
     "@vue/cli-plugin-unit-jest": "^3.0.1",
