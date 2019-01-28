@@ -40,7 +40,7 @@ const template = (app: Home) => html`
     </div>
 
     <!-- create new tree modal -->
-    <Modal v-if="${app.showCreateModal}">
+    <Modal v-if="${app.showCreateModal}" @close="${(app.showCreateModal = false)}">
       Enter the name for your family tree: <input type="text" v-model="${app.newTreeName}" />
       <button @click="${app.createNewAndOpen()}">Create</button>
     </Modal>
