@@ -3,9 +3,7 @@ import { html } from '@/utils'
 
 /** @VueLiteralCompiler Template */
 const template = html`
-  <template>
-    <div id="app"><router-view /></div>
-  </template>
+  <div id="app"><router-view /></div>
 `
 
 @Component
