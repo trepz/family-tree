@@ -1,4 +1,4 @@
-import { Component, Vue, Emit } from 'vue-property-decorator'
+import { Component, Vue, Emit, Prop } from 'vue-property-decorator'
 import { html } from '@/utils'
 
 /** @VueLiteralCompiler Template */
@@ -7,7 +7,7 @@ const template = (modal: Modal) => html`
     <div class="modal-background" @click="${modal.close()}"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
+        <p class="modal-card-title">${modal.title}</p>
         <button class="delete" aria-label="close" @click="${modal.close()}"></button>
       </header>
       <section class="modal-card-body"><slot></slot></section>
@@ -20,6 +20,9 @@ const template = (modal: Modal) => html`
 
 @Component
 export default class Modal extends Vue {
+  @Prop({ type: String, default: '' })
+  title!: string
+
   @Emit()
   close() {
     return
