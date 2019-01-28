@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import 'typeface-raleway'
+import 'bulma/css/bulma.css'
 import '@/assets/sass/app.scss'
 
 Vue.config.productionTip = false
