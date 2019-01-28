@@ -60,7 +60,7 @@ export default class Home extends Vue {
   /**
    * Create a new json file which represents a family tree and open it in the editor.
    *
-   * @param {number} attempt - The number of attempts this function will try on ENOENT error.
+   * @param attempt - The number of attempts this function will try on ENOENT error.
    */
   async createNewAndOpen(attempt: number = 1): Promise<void> {
     try {
