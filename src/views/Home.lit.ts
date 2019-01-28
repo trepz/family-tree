@@ -13,7 +13,7 @@ const template = (app: Home) => html`
   <div class="page">
     <div class="page__content page__content--centered">
       <!-- main title -->
-      <div class="title title--big title--soft">Family Tree</div>
+      <div class="main-title">Family Tree</div>
 
       <!-- spacer -->
       <div class="mb-75"></div>
