@@ -64,12 +64,14 @@ export default class Home extends Vue {
    */
   async createNewAndOpen(attempt: number = 1): Promise<void> {
     try {
-      await write(`${this.path}${this.newTreeName}.json`, '')
+      await write(`${this.path}${this.newTreeName}.json`, '', { flag: 'wx' })
     } catch (err) {
       if (err.code === 'ENOENT' && attempt > 0) {
         await this.createStorageDir()
         return this.createNewAndOpen(--attempt)
       }
+      console.log(err)
+      return
       // -- HANDLE FAILURE WITH MODAL --
     }
 
