@@ -2,7 +2,7 @@ import { Component, Vue, Emit, Prop } from 'vue-property-decorator'
 import { html } from '@/utils'
 
 /** @VueLiteralCompiler Template */
-const template = (modal: Modal & { _b: ModalButton }) => html`
+const template = (modal: Modal & { _b: IModalButton }) => html`
   <div class="modal is-active">
     <div class="modal-background" @click="${modal.close()}"></div>
     <div class="modal-card">
@@ -28,7 +28,7 @@ const template = (modal: Modal & { _b: ModalButton }) => html`
     </div>
   </div>
 `
-type ModalButton = {
+export interface IModalButton {
   label: string
   event: string
   color?: string
@@ -49,7 +49,7 @@ export default class Modal extends Vue {
       },
     ],
   })
-  buttons!: ModalButton[]
+  buttons!: IModalButton[]
 
   @Emit()
   close() {
