@@ -2,7 +2,7 @@ import { Component, Vue, Emit, Prop } from 'vue-property-decorator'
 import { html } from '@/utils'
 
 /** @VueLiteralCompiler Template */
-const template = (modal: Modal) => html`
+const template = (modal: Modal & { _b: ModalButton }) => html`
   <div class="modal is-active">
     <div class="modal-background" @click="${modal.close()}"></div>
     <div class="modal-card">
@@ -17,12 +17,12 @@ const template = (modal: Modal) => html`
       <section class="modal-card-body"><slot></slot></section>
       <footer class="modal-card-foot">
         <button
-          v-for="b in buttons"
+          v-for="${<any>modal._b in modal.buttons}"
           class="button"
-          :class="b.color"
-          @click="$emit(b.event)"
+          :class="${modal._b.color}"
+          @click="${modal.$emit(modal._b.event)}"
         >
-          {{ b.label }}
+          ${modal._b.label}
         </button>
       </footer>
     </div>
