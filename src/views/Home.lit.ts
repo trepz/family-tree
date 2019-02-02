@@ -33,20 +33,31 @@ const template = (app: Home) => html`
           <!-- open existing button -->
           <div class="icon-button" @click="${(app.showOpenModal = true)}">
             <i class="icon-button__icon mdi mdi-book-open-variant"></i>
-            <div class="icon-button__caption">Open a previously saved tree.</div>
+            <div class="icon-button__caption">
+              Open a previously saved tree.
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- create new tree modal -->
-    <Modal v-if="${app.showCreateModal}" @close="${(app.showCreateModal = false)}" title="Create new tree">
-      Enter the name for your family tree: <input type="text" v-model="${app.newTreeName}" />
+    <Modal
+      v-if="${app.showCreateModal}"
+      @close="${(app.showCreateModal = false)}"
+      title="Create new tree"
+    >
+      Enter the name for your family tree:
+      <input type="text" v-model="${app.newTreeName}" />
       <button @click="${app.createNewAndOpen()}">Create</button>
     </Modal>
 
     <!-- open existing modal -->
-    <Modal v-if="${app.showOpenModal}" @close="${(app.showOpenModal = false)}" title="Open existing tree">
+    <Modal
+      v-if="${app.showOpenModal}"
+      @close="${(app.showOpenModal = false)}"
+      title="Open existing tree"
+    >
       Select from the following saved trees: [ ]
     </Modal>
   </div>

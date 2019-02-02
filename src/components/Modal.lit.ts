@@ -8,11 +8,22 @@ const template = (modal: Modal) => html`
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">${modal.title}</p>
-        <button class="delete" aria-label="close" @click="${modal.close()}"></button>
+        <button
+          class="delete"
+          aria-label="close"
+          @click="${modal.close()}"
+        ></button>
       </header>
       <section class="modal-card-body"><slot></slot></section>
       <footer class="modal-card-foot">
-        <button v-for="b in buttons" class="button" :class="b.color" @click="$emit(b.event)">{{ b.label }}</button>
+        <button
+          v-for="b in buttons"
+          class="button"
+          :class="b.color"
+          @click="$emit(b.event)"
+        >
+          {{ b.label }}
+        </button>
       </footer>
     </div>
   </div>
